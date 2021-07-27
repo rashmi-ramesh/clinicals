@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/clinicals.css' %}"/>
+    <title>Patient List</title>
+</head>
+<body>
+    <h1>Patient List:</h1>
+    {% if patient_list %}
+    <table border="1">
+        <thead>
+            <th>ID</th>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>AGE</th>
+        </thead>
+        {% for patient in patient_list %}
+        <tr>
+          <td>{{patient.id}}</td>
+          <td>{{patient.firstName | title}}</td>
+          <td>{{patient.lastName | title}}</td>
+          <td>{{patient.age}}</td>
+          <td><a href="/update/{{patient.id}}">Update</a></td>
+          <td><a href="/delete/{{patient.id}}">Delete</a></td>
+          <td><a href="/addData/{{patient.id}}">Add Data</a></td>
+          <td><a href="/analyze/{{patient.id}}">Analyze Data</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No Patient Records yet...</p>
+    {% endif %}
+    <br/>
+    <br/>
+    <a href="/create">Add Patient</a>
+</body>
+</html>

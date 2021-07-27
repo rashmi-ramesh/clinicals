@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/clinicals.css' %}"/>
+    <title>Clinical Data Form</title>
+</head>
+<body>
+    <h2>Patient Details:</h2>
+    Id : {{patient.id}}<br/>
+    First Name : {{patient.firstName}}<br/>
+    Last Name : {{patient.lastName}}<br/>
+    Age : {{patient.age}}<br/>
+    <h2>Patient Clinical Details Update:</h2>
+    <form method="post">
+        <table>
+            {{form.as_table}}
+            {% csrf_token %}
+        </table>
+        <br/>
+        <input type="submit" value="Save"/>
+    </form>
+    <br/>
+    <a href="/">Home</a>
+    <br/>
+    <ul>
+        <li>Provide Height/Weight in Feet/Pounds (Eg: 5/120)</li>
+        <li>Provide Blood Pressure range in mmHg (Eg: 140/90)</li>
+        <li>Provide Heart Rate in Beats per Minute (BPM) (Eg: 75)</li>
+    </ul>
+
+</body>
+</html>

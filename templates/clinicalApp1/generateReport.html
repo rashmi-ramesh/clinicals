@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/clinicals.css' %}"/>
+    <title>Clinical Report</title>
+</head>
+<body>
+    <h2>Patient Clinical Report:</h2>
+    {% if data %}
+    <table border="2">
+        <thead>
+            <th>Component Name</th>
+            <th>Component Value</th>
+            <th>Measured Date Time</th>
+        </thead>
+        {% for eachEntry in data %}
+        <tr>
+            <td>{{eachEntry.componentName}}</td>
+            <td>{{eachEntry.componentValue}}</td>
+            <td>{{eachEntry.measuredDateTime}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No Clinical data records to show...</p>
+    {% endif %}
+    <br/>
+    <a href="/">Home</a>
+    <br/>
+    <ul>
+        <li>Height/Weight in Feet/Pounds</li>
+        <li>Blood Pressure range in mmHg</li>
+        <li>Heart Rate in Beats per Minute</li>
+    </ul>
+</body>
+</html>
